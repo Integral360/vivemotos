@@ -1,199 +1,369 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Javier Jácome | Vive Motos Suzuki</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Javier Jácome | Vive Motos Suzuki</title>
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
+  <!-- Google Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,500,1,0" rel="stylesheet">
 
-:root{
-  --red:#e50043;
-  --blue:#003da5;
-  --wa:#25D366;
-  --glass:rgba(255,255,255,.06);
-  --text:#fff;
-}
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-body{
-  font-family: system-ui;
-  color: var(--text);
-  background:#000;
-  padding-bottom:90px;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* FONDO */
-.bg{
-  position:fixed;
-  inset:0;
-  background:
-    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.9)),
-    radial-gradient(circle at top left, rgba(229,0,67,.2), transparent),
-    radial-gradient(circle at bottom right, rgba(0,61,165,.2), transparent),
-    url('fondo.jpg') center/cover no-repeat;
-  z-index:-1;
-}
+    :root {
+      --red: #e50043;
+      --red-dark: #b80036;
+      --blue: #003da5;
+      --blue-dark: #002e7d;
+      --wa: #25D366;
+      --text: #ffffff;
+      --muted: #cfd6e6;
+      --glass: rgba(255,255,255,.07);
+      --line: rgba(255,255,255,.08);
+    }
 
-/* CARD */
-.container{
-  max-width:420px;
-  margin:auto;
-  padding:16px;
-}
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #000;
+      padding-bottom: 94px;
+    }
 
-.card{
-  background: rgba(10,10,12,.85);
-  backdrop-filter: blur(16px);
-  border-radius:28px;
-  border:1px solid rgba(255,255,255,.08);
-  overflow:hidden;
-}
+    .bg {
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(0,0,0,.62), rgba(0,0,0,.9)),
+        radial-gradient(circle at top left, rgba(229,0,67,.18), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(0,61,165,.20), transparent 28%),
+        url('fondo.jpg') center/cover no-repeat;
+      z-index: -1;
+    }
 
-/* HERO */
-.hero{
-  text-align:center;
-  padding:30px 20px;
-}
+    .container {
+      max-width: 420px;
+      margin: auto;
+      padding: 16px;
+    }
 
-.logo{
-  width:100px;
-  height:100px;
-  background:#fff;
-  border-radius:22px;
-  padding:10px;
-  margin-bottom:12px;
-}
+    .card {
+      background: rgba(10,10,12,.84);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(0,0,0,.75);
+      animation: fadeUp .6s ease;
+    }
 
-h1{font-size:24px}
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.company{
-  color:#7fa9ff;
-  font-weight:bold;
-}
+    .hero {
+      text-align: center;
+      padding: 30px 20px 24px;
+      position: relative;
+      overflow: hidden;
+    }
 
-.subtitle{
-  font-size:14px;
-  color:#cfd6e6;
-  margin-top:10px;
-}
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 2px;
+      top: 22px;
+      left: -45px;
+      transform: rotate(-18deg);
+      background: linear-gradient(90deg, transparent, rgba(229,0,67,.55), transparent);
+    }
 
-/* BOTONES */
-.actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin:15px 0;
-}
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 2px;
+      bottom: 34px;
+      right: -42px;
+      transform: rotate(-18deg);
+      background: linear-gradient(90deg, transparent, rgba(0,61,165,.55), transparent);
+    }
 
-.btn{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  padding:14px;
-  border-radius:16px;
-  text-decoration:none;
-  font-weight:bold;
-}
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(229,0,67,.14);
+      border: 1px solid rgba(229,0,67,.18);
+      color: #ff8fb0;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
 
-.call{background:var(--red)}
-.wa{background:var(--wa)}
+    .logo {
+      width: 100px;
+      height: 100px;
+      background: #fff;
+      border-radius: 22px;
+      padding: 10px;
+      object-fit: contain;
+      margin-bottom: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.6);
+      position: relative;
+      z-index: 1;
+    }
 
-.btn-outline{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:12px;
-  border-radius:14px;
-  background:var(--glass);
-  text-decoration:none;
-  color:#fff;
-  margin-bottom:15px;
-}
+    h1 {
+      font-size: 24px;
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
+    }
 
-/* REDES TIPO APP */
-.socials{
-  display:flex;
-  justify-content:center;
-  gap:16px;
-  margin-top:10px;
-}
+    .company {
+      color: #7fa9ff;
+      font-weight: bold;
+      margin-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
 
-.social-app{
-  width:58px;
-  height:58px;
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-  transition:.25s;
-  box-shadow: 0 10px 25px rgba(0,0,0,.5);
-}
+    .role {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
 
-.social-app:hover{
-  transform:scale(1.08);
-}
+    .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 12px auto 0;
+      line-height: 1.55;
+      max-width: 320px;
+      position: relative;
+      z-index: 1;
+    }
 
-/* COLORES */
-.instagram{
-  background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
-}
+    .content {
+      padding: 16px;
+    }
 
-.facebook{
-  background:#1877f2;
-}
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
+    }
 
-/* ICONOS */
-.icon{
-  width:26px;
-  height:26px;
-  fill:#fff;
-}
+    .app-btn {
+      height: 64px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 24px rgba(0,0,0,.35);
+      transition: .22s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* SECCIONES */
-.section{
-  background:var(--glass);
-  padding:14px;
-  border-radius:16px;
-  margin-bottom:10px;
-}
+    .app-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 14px 30px rgba(0,0,0,.45);
+    }
 
-.chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
+    .app-btn .material-symbols-outlined,
+    .app-btn i {
+      font-size: 28px;
+      line-height: 1;
+    }
 
-.chip{
-  padding:6px 10px;
-  border-radius:20px;
-  background:rgba(0,61,165,.2);
-  font-size:12px;
-}
+    .call-app {
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+    }
 
-/* UBICACION */
-.location{
-  display:block;
-  text-align:center;
-  padding:12px;
-  background:var(--blue);
-  border-radius:12px;
-  text-decoration:none;
-  color:#fff;
-}
+    .wa-app {
+      background: linear-gradient(135deg, #2ee86f, #25D366);
+    }
 
-/* FOOTER */
-.brand{
-  text-align:center;
-  font-size:12px;
-  margin-top:10px;
-  color:#aaa;
-  text-decoration:none;
-}
+    .mail-app {
+      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+    }
 
-</style>
+    .instagram-app {
+      background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+    }
+
+    .facebook-app {
+      background: linear-gradient(135deg, #1877f2, #0f5ec9);
+    }
+
+    .location-app {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+    }
+
+    .section {
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,.05);
+      padding: 14px;
+      border-radius: 16px;
+      margin-bottom: 10px;
+    }
+
+    .section h2 {
+      color: #7fa9ff;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 20px;
+      background: rgba(0,61,165,.20);
+      border: 1px solid rgba(0,61,165,.18);
+      color: #dbe7ff;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .social-app {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(0,0,0,.4);
+      transition: .22s ease;
+    }
+
+    .social-app i {
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .social-app:hover {
+      transform: translateY(-2px) scale(1.06);
+    }
+
+    .instagram {
+      background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
+    }
+
+    .facebook {
+      background: #1877f2;
+    }
+
+    .location-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 4px;
+    }
+
+    .location-icon-btn {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      box-shadow: 0 10px 24px rgba(0,0,0,.4);
+      transition: .22s ease;
+    }
+
+    .location-icon-btn:hover {
+      transform: translateY(-2px) scale(1.06);
+    }
+
+    .location-icon-btn .material-symbols-outlined {
+      font-size: 28px;
+    }
+
+    .brand {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 10px;
+      color: #aaa;
+      text-decoration: none;
+      display: block;
+    }
+
+    .brand strong {
+      color: #7fa9ff;
+    }
+
+    .sticky {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      background: rgba(0,0,0,.88);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    .sticky .app-btn {
+      height: 56px;
+      border-radius: 16px;
+      box-shadow: none;
+    }
+
+    @media (max-width: 480px) {
+      .app-grid,
+      .sticky {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -201,72 +371,86 @@ h1{font-size:24px}
 <div class="bg"></div>
 
 <div class="container">
-<div class="card">
+  <div class="card">
 
-<div class="hero">
-  <img src="foto.png" class="logo">
-  <h1>Javier Jácome</h1>
-  <div class="company">Vive Motos Suzuki</div>
-  <div class="subtitle">
-    Descubre el mundo de las motos Suzuki en Ipiales. ¡Pasión por las motos!
+    <div class="hero">
+      <div class="badge">Asesor comercial</div>
+      <img src="foto.png" class="logo" alt="Logo Vive Motos Suzuki">
+      <h1>Javier Jácome</h1>
+      <div class="company">Vive Motos Suzuki</div>
+      <div class="role">Asesor Comercial</div>
+      <div class="subtitle">
+        Descubre el mundo de las motos Suzuki en Ipiales. Encuentra repuestos y cumple tus sueños sobre ruedas. ¡Pasión por las motos!
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="app-grid">
+        <a href="tel:+573173763424" class="app-btn call-app" aria-label="Llamar">
+          <span class="material-symbols-outlined">call</span>
+        </a>
+
+        <a href="https://wa.me/573173763424" class="app-btn wa-app" target="_blank" aria-label="WhatsApp">
+          <i class="bi bi-whatsapp"></i>
+        </a>
+
+        <a href="mailto:vivemotossuzukiipiales@gmail.com" class="app-btn mail-app" aria-label="Email">
+          <span class="material-symbols-outlined">mail</span>
+        </a>
+      </div>
+
+      <div class="section">
+        <h2>Servicios</h2>
+        <div class="chips">
+          <span class="chip">Motos Nuevas</span>
+          <span class="chip">Repuestos</span>
+          <span class="chip">Accesorios</span>
+          <span class="chip">Taller</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Redes</h2>
+        <div class="socials">
+          <a href="https://www.instagram.com/vivemotos_suzuki_ipiales/" class="social-app instagram" target="_blank" aria-label="Instagram">
+            <i class="bi bi-instagram"></i>
+          </a>
+
+          <a href="https://www.facebook.com/vivemotossuzuki.ipiales/" class="social-app facebook" target="_blank" aria-label="Facebook">
+            <i class="bi bi-facebook"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Ubicación</h2>
+        <div class="location-wrap">
+          <a href="https://maps.app.goo.gl/Snb7SffiaRzoCzRv6" class="location-icon-btn" target="_blank" aria-label="Ubicación">
+            <span class="material-symbols-outlined">location_on</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="https://integral360.com.co" class="brand" target="_blank">
+        Powered by <strong>Integral360</strong>
+      </a>
+    </div>
   </div>
 </div>
 
-<div class="content">
+<div class="sticky">
+  <a href="tel:+573173763424" class="app-btn call-app" aria-label="Llamar">
+    <span class="material-symbols-outlined">call</span>
+  </a>
 
-<div class="actions">
-  <a href="tel:+573173763424" class="btn call">📞</a>
-  <a href="https://wa.me/573173763424" class="btn wa">💬</a>
-</div>
+  <a href="https://wa.me/573173763424" class="app-btn wa-app" target="_blank" aria-label="WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
 
-<a href="mailto:vivemotossuzukiipiales@gmail.com" class="btn-outline">
-✉️ Email
-</a>
-
-<div class="section">
-<h2>Servicios</h2>
-<div class="chips">
-<span class="chip">Motos Nuevas</span>
-<span class="chip">Repuestos</span>
-<span class="chip">Accesorios</span>
-<span class="chip">Taller</span>
-</div>
-</div>
-
-<div class="section">
-<h2>Redes</h2>
-
-<div class="socials">
-
-<a href="https://www.instagram.com/vivemotos_suzuki_ipiales/" class="social-app instagram">
-  <svg class="icon" viewBox="0 0 24 24">
-    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/>
-  </svg>
-</a>
-
-<a href="https://www.facebook.com/vivemotossuzuki.ipiales/" class="social-app facebook">
-  <svg class="icon" viewBox="0 0 24 24">
-    <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.87.24-1.46 1.49-1.46H16.7V4.96c-.3-.04-1.35-.12-2.57-.12-2.54 0-4.28 1.55-4.28 4.4V11H7v3h2.85v8h3.65z"/>
-  </svg>
-</a>
-
-</div>
-
-</div>
-
-<div class="section">
-<h2>Ubicación</h2>
-<a href="https://maps.app.goo.gl/Snb7SffiaRzoCzRv6" class="location">
-📍 Ver ubicación
-</a>
-</div>
-
-<a href="https://integral360.com.co" class="brand">
-Powered by <strong>Integral360</strong>
-</a>
-
-</div>
-</div>
+  <a href="mailto:vivemotossuzukiipiales@gmail.com" class="app-btn mail-app" aria-label="Email">
+    <span class="material-symbols-outlined">mail</span>
+  </a>
 </div>
 
 </body>
